@@ -8,10 +8,16 @@ pipeline {
               archive 'target/*.jar'
             }
         }   
-      stage('Unit Test') {
+      stage('Unit Test - Junit and Jacoco Added Tests') {
         steps {
           sh "mvn test" 
-              }
+          }
+           post {
+            always {
+              junit 'target/sunfire-reports/*.xml'
+              jacoco execPattern: 'target/jacoco.exec'
+            }
+           }
       }
   }
 }
