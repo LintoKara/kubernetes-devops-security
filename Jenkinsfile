@@ -9,7 +9,7 @@ pipeline {
             }
         }   
       stage ('test')  {
-        sh "mvn test"
+        sh "mvn test" //Testig
               }
     }
 }
